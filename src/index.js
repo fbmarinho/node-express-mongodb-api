@@ -10,9 +10,11 @@ app.use(express.json())
 //Routes config
 require('./routes')(app) 
 
+//Puclic routes
 app.get("/",(req,res)=>{
   res.json({message: "Hello !"})
 })
+
 
 mongoose.connect(process.env.DB_URL)
 .then(()=>{
