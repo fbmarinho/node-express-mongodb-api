@@ -1,2 +1,3 @@
 # node-express-mongodb-api
-Test
+
+Node.JS, Express.JS, MongoDB api test.
