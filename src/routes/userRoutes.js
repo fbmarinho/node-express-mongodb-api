@@ -3,11 +3,11 @@ const privateRoute = require('../middleware/privateRoute');
 
 module.exports = function(app){
   
-  //READ BY ID
+  //FIND BY ID
   app.get('/user/:id', privateRoute, async (req,res)=>{
     
     try {
-      const user = await User.findById(req.params.id, "-password");
+      const user = await User.findById(req.params.id);
 
       if(!user) return res.status(404).json({message: "User not found"});
 
@@ -18,8 +18,8 @@ module.exports = function(app){
     }
 
   })
-  //READ
-  app.get('/user', async (req,res)=>{
+  //GET ALL
+  app.get('/user', privateRoute, async (req,res)=>{
   
     try {
       const users = await User.find()
@@ -31,7 +31,7 @@ module.exports = function(app){
   })
 
   //UPDATE
-  app.put('/user/', async (req,res)=>{
+  app.put('/user/', privateRoute, async (req,res)=>{
 
     try {
       const updatedUser = await User.findOneAndUpdate({email: req.body.email},req.body, {returnOriginal: false});
@@ -43,7 +43,7 @@ module.exports = function(app){
   })
 
   //UPDATE
-  app.delete('/user/', async (req,res)=>{
+  app.delete('/user/', privateRoute, async (req,res)=>{
 
     try {
       const user = await User.findOneAndDelete({email: req.body.email});

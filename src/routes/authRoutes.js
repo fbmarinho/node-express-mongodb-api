@@ -29,7 +29,7 @@ module.exports = function(app){
         secret
       )
 
-      res.status(200).json({message: "Authenticated", token})
+      res.status(200).json({message: "Authenticated", token});
     } catch (error) {
       res.status(500).json({error: error})
     }
@@ -54,7 +54,7 @@ module.exports = function(app){
 
       await User.create({email,password: passwordHash});
 
-      res.status(200).json({message: 'User registered successfully !'})
+      res.status(200).json({message: 'User registered successfully !'});
     } catch (error) {
       res.status(500).json({error: error})
     }
